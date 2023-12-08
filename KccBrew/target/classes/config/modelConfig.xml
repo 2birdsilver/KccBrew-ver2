@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration 	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias type="kr.co.kccbrew.sysMng.logMng.model.LogMngVo"  alias="logResult" />
+		<typeAlias type="kr.co.kccbrew.comm.security.model.UserVo"  alias="userResult" />
+		<typeAlias type="kr.co.kccbrew.strMng.model.StrMngVo" alias="storeResult" />
+		<typeAlias type="kr.co.kccbrew.sysMng.alarm.model.AlarmVo" alias="alarmResult" />
+		<typeAlias type="kr.co.kccbrew.batch.AsLogVo" alias="asLogResult" />
+	</typeAliases>
+</configuration>

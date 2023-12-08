@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+html {
+	overflow: overlay;
+}
+#mainContainer {
+	background-color: #eef4ff;
+ 	display: flex;
+ 	flex-direction: column;
+	overflow-y: auto;
+}
+#mainHeader {
+}
+#mainContents {
+	margin-bottom: 50px;
+}
+#mainFooter {
+}

@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.kccbrew.strMng.dao.IStrMngRepository">
+
+	<select id="strAllFilter" resultType="kr.co.kccbrew.strMng.model.StrMngVo" parameterType="kr.co.kccbrew.strMng.model.StrMngVo">
+	 SELECT 
+        a.store_nm AS "storeNm", 
+        a.grp_cd_dtl_nm AS "locationNm",
+        a.store_telno AS "storeTelNo",
+        a.store_seq AS "storeSeq"
+    FROM (
+        SELECT
+            ROW_NUMBER() OVER(ORDER BY a.store_seq desc) AS ROW_NUM,
+            a.store_nm,
+            b.grp_cd_dtl_nm, a.store_telno,  a.store_seq
+        FROM store a
+        JOIN group_code_detail b ON a.location_cd = b.grp_cd_dtl_id
+        WHERE
+            (b.grp_cd_id='L' OR b.grp_cd_id='LL')
+            <if test="startDate != '' and startDate != null">
+                 <![CDATA[
+               AND a.reg_dttm >= #{startDate}]]>
+            </if>
+            <if test="endDate!= '' and endDate!= null">
+                  <![CDATA[
+                AND a.reg_dttm < TO_DATE(#{endDate},'YYYY-MM-DD')+1
+                  ]]>
+            </if>
+           
+            <if test="regUser != null and regUser != ''">
+                AND a.REG_USER = #{regUser}
+            </if>
+            <if test="keyword != null and keyword != ''">
+                AND a.store_nm LIKE '%' || #{keyword} || '%'
+            </if>
+			<choose>
+			<when test="locationCdSeoul != null and locationCdSeoul != ''">
+			AND a.location_cd = #{locationCdSeoul}
+			</when>
+			<when test="locationCd != null and locationCd != '' and locationCdSeoul == ''">
+                <![CDATA[
+            And a.location_cd LIKE #{locationCd}||'-%'
+            ]]>
+            </when>
+            </choose>
+            <if test="useYn != null and useYn != ''">
+                AND a.use_yn = #{useYn}
+            </if>
+            
+    ) a
+	</select>
+	<select id="strFilter" resultType="kr.co.kccbrew.strMng.model.StrMngVo" parameterType="java.util.Map">
+    SELECT 
+        a.store_nm AS "storeNm", 
+        a.grp_cd_dtl_nm AS "locationNm",
+        a.store_telno AS "storeTelNo",
+        a.store_seq AS "storeSeq"
+    FROM (
+        SELECT
+            ROW_NUMBER() OVER(ORDER BY a.store_seq desc) AS ROW_NUM,
+            a.store_nm,
+            b.grp_cd_dtl_nm, a.store_telno,  a.store_seq
+        FROM store a
+        JOIN group_code_detail b ON a.location_cd = b.grp_cd_dtl_id
+        WHERE
+            (b.grp_cd_id='L' OR b.grp_cd_id='LL')
+            <if test="StrMngVo.startDate != '' and StrMngVo.startDate != null">
+                 <![CDATA[
+               AND a.reg_dttm >= #{StrMngVo.startDate}]]>
+            </if>
+            <if test="StrMngVo.endDate!= '' and StrMngVo.endDate!= null">
+                  <![CDATA[
+                AND a.reg_dttm < TO_DATE(#{StrMngVo.endDate},'YYYY-MM-DD')+1
+                  ]]>
+            </if>
+           
+            <if test="StrMngVo.regUser != null and StrMngVo.regUser != ''">
+                AND a.REG_USER = #{StrMngVo.regUser}
+            </if>
+            <if test="StrMngVo.keyword != null and StrMngVo.keyword != ''">
+                AND a.store_nm LIKE '%' || #{StrMngVo.keyword} || '%'
+            </if>
+			<choose>
+			<when test="StrMngVo.locationCdSeoul != null and StrMngVo.locationCdSeoul != ''">
+			AND a.location_cd = #{StrMngVo.locationCdSeoul}
+			</when>
+			<when test="StrMngVo.locationCd != null and StrMngVo.locationCd != '' and StrMngVo.locationCdSeoul == ''">
+                <![CDATA[
+            And a.location_cd LIKE #{StrMngVo.locationCd}||'-%'
+            ]]>
+            </when>
+            </choose>
+            <if test="StrMngVo.useYn != null and StrMngVo.useYn != ''">
+                AND a.use_yn = #{StrMngVo.useYn}
+            </if>
+            
+    ) a
+    WHERE ROW_NUM BETWEEN #{start} AND #{end}
+</select>
+
+
+
+
+
+	<!-- 검색된 점포 개수 조회 -->
+	<select id="getStrFilterCount"
+		parameterType="java.util.Map"
+		resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM (
+		SELECT
+		ROW_NUMBER() OVER(ORDER BY STORE_SEQ) AS
+		ROW_NUM, a.store_nm			AS	"storeNm", 
+        	b.grp_cd_dtl_nm		AS	"locationNm",
+        	a.store_telno		AS	"storeTelNo",
+        	a.store_seq			AS	"storeSeq"
+		FROM store a
+        JOIN group_code_detail b ON a.location_cd = b.grp_cd_dtl_id
+		where 
+			(b.grp_cd_id='L'
+			OR
+			b.grp_cd_id='LL')
+		<!-- 검색 조건 -->
+               <if test="StrMngVo.startDate != '' and StrMngVo.startDate != null">
+                 <![CDATA[
+               AND a.reg_dttm >= #{StrMngVo.startDate}]]>
+            </if>
+            <if test="StrMngVo.endDate!= '' and StrMngVo.endDate!= null">
+                  <![CDATA[
+                AND a.reg_dttm < TO_DATE(#{StrMngVo.endDate},'YYYY-MM-DD')+1
+                  ]]>
+            </if>
+           
+            <if test="StrMngVo.regUser != null and StrMngVo.regUser != ''">
+                AND a.REG_USER = #{StrMngVo.regUser}
+            </if>
+            <if test="StrMngVo.keyword != null and StrMngVo.keyword != ''">
+                AND a.store_nm LIKE '%' || #{StrMngVo.keyword} || '%'
+            </if>
+			<choose>
+			<when test="StrMngVo.locationCdSeoul != null and StrMngVo.locationCdSeoul != ''">
+			AND a.location_cd = #{StrMngVo.locationCdSeoul}
+			</when>
+			<when test="StrMngVo.locationCd != null and StrMngVo.locationCd != '' and StrMngVo.locationCdSeoul == ''">
+                <![CDATA[
+            And a.location_cd LIKE #{StrMngVo.locationCd}||'-%'
+            ]]>
+            </when>
+            </choose>
+           
+            <if test="StrMngVo.useYn != null and StrMngVo.useYn != ''">
+                AND a.use_yn = #{StrMngVo.useYn}
+            </if>
+		) 
+	</select>
+	
+
+	<select id="storeDetail" parameterType="int"
+		resultType="kr.co.kccbrew.strMng.model.StrMngVo">
+	<![CDATA[
+        select
+        	a.store_seq 		AS  "storeSeq",
+        	a.store_nm			AS	"storeNm", 
+        	a.location_cd			AS	"locationCd", 
+        	b.grp_cd_dtl_nm		AS	"locationNm",
+        	a.store_telno		AS	"storeTelNo",
+        	a.store_addr 		AS 	"storeAddr",
+        	a.latitude			AS	"latitude",
+			a.longitude			AS	"longitude",
+			a.store_addr_dtl	AS 	"storeAddrDtl",
+			a.use_yn	AS 	"useYn"
+			from 
+			store a, 
+			group_code_detail b
+		where 
+			a.store_seq = #{storeSeq}
+		and
+			(b.grp_cd_id='L'
+			OR
+			b.grp_cd_id='LL')
+		and	
+			a.location_cd = b.grp_cd_dtl_id
+        ]]>
+	</select>
+
+	<select id="ownerList" parameterType="int"
+		resultType="kr.co.kccbrew.strMng.model.StrMngVo">
+		<![CDATA[
+        select 
+        	b.user_nm			AS	"userNm",
+        	b.user_telno		AS	"userTelNo"
+		from 
+			store_user_map a, 
+			users b
+		where 
+			a.user_id = b.user_id
+		and
+			a.store_seq = #{storeSeq}
+		order by 
+			b.reg_dttm
+        ]]>
+	</select>
+
+	<insert id="insert"
+		parameterType="kr.co.kccbrew.strMng.model.StrMngVo">
+
+		INSERT INTO STORE
+		(store_seq, store_nm, store_addr, store_addr_dtl,
+		latitude, longitude,
+		store_telno, location_cd, reg_dttm, reg_user,
+		MOD_DTTM, MOD_USER,
+		USE_YN)
+		<choose>
+			<when test="locationCdSeoul != ''">
+				VALUES
+				(store_seq.nextval, #{storeNm}, #{storeAddr}, #{storeAddrDtl}, #{latitude},
+				#{longitude}, #{storeTelNo}, #{locationCdSeoul}, SYSDATE,
+				#{regUser},
+				SYSDATE, #{modUser}, 'Y')
+			</when>
+			<when test="locationCdSeoul == ''">
+
+				VALUES
+				(store_seq.nextval, #{storeNm}, #{storeAddr}, #{storeAddrDtl}, #{latitude},
+				#{longitude}, #{storeTelNo}, #{locationCd}, SYSDATE, #{regUser},
+				SYSDATE, #{modUser}, 'Y')
+			</when>
+
+		</choose>
+	</insert>
+
+	<select id="locationNm"
+		resultType="kr.co.kccbrew.strMng.model.StrMngVo">
+		<![CDATA[
+        select 
+        	grp_cd_dtl_id			AS "locationCd",
+        	grp_cd_dtl_nm			AS "locationNm"
+        from
+        	group_code_detail
+        where
+        	grp_cd_id='L'
+        ]]>
+	</select>
+
+	<select id="locationNmSeoul"
+		resultType="kr.co.kccbrew.strMng.model.StrMngVo">
+		<![CDATA[
+        select 
+        	grp_cd_dtl_id			AS "locationCd",
+        	grp_cd_dtl_nm			AS "locationNm"
+        from
+        	group_code_detail
+        where
+			grp_cd_id='LL'
+        ]]>
+	</select>
+
+	<update id="update"
+		parameterType="kr.co.kccbrew.strMng.model.StrMngVo">
+		UPDATE
+		store
+		SET
+		store_nm = #{storeNm},
+		store_addr = #{storeAddr},
+		store_addr_dtl = #{storeAddrDtl},
+		latitude = #{latitude},
+		longitude = #{longitude},
+		store_telno = #{storeTelNo},
+		<if test="locationCdSeoul != null ">
+			location_cd = #{locationCdSeoul}
+		</if>
+		<if test="locationCdSeoul == null and locationCd != '02'.toString()">
+			location_cd = #{locationCd}
+		</if>
+		,
+		MOD_DTTM = SYSDATE,
+		MOD_USER = #{modUser},
+		use_yn=#{useYn}
+		WHERE
+		store_seq=#{storeSeq}
+
+	</update>
+
+	<select id="selectStoreByName" parameterType="string"
+		resultType="kr.co.kccbrew.strMng.model.StrMngVo">
+        <![CDATA[
+        SELECT 
+            store_seq AS "storeSeq"
+        FROM
+            STORE
+        WHERE store_nm = #{storeNm}
+        ]]>
+	</select>
+	
+<select id="selectMyStr" parameterType="string" resultType="kr.co.kccbrew.strMng.model.StrMngVo"> 
+<![CDATA[
+	SELECT 	
+		s.store_nm AS storeNm
+		,s.store_addr AS storeAddr
+		,s.store_addr_dtl AS storeAddrDtl
+		,s.store_telno AS storeTelNo
+		,s.store_seq AS storeSeq
+		,rownum AS rowNumber
+	FROM store s 
+	INNER JOIN store_user_map su ON su.store_seq=s.store_seq 
+	WHERE su.user_id=#{userId}
+]]>
+</select>
+<insert id="insertStr" parameterType="hashmap">
+<![CDATA[
+INSERT INTO store_user_map VALUES(#{storeSeq},#{userId})
+]]>
+</insert>
+<delete id="deleteStr" parameterType="hashmap">
+<![CDATA[
+DELETE FROM store_user_map WHERE store_seq=#{storeSeq} AND user_id=#{userId}
+]]>
+</delete>
+<select id="selectDeleteAsList" parameterType="string" resultType="kr.co.kccbrew.asMng.model.AsMngVo">
+<![CDATA[
+	SELECT a.as_info_seq AS "asInfoSeq"
+			, aa.as_assign_seq AS "asAssignSeq"
+			, ar.as_result_seq AS "asResultSeq"
+	FROM as_information a 
+	LEFT OUTER JOIN as_assign aa ON a.as_info_seq=aa.as_info_seq 
+	LEFT OUTER JOIN as_result ar ON ar.as_assign_seq=aa.as_assign_seq 
+	WHERE a.store_seq=#{storeSeq} AND a.store_mng_id=#{userId} 
+]]>
+</select>
+<delete id="deleteASresult" parameterType="string">
+<![CDATA[
+	DELETE FROM as_result WHERE as_result_seq=#{asResultSeq}
+]]>
+</delete>
+<delete id="deleteASAssign" parameterType="string">
+<![CDATA[
+	DELETE FROM as_assign WHERE as_assign_seq=#{asAssignSeq}
+]]>
+</delete>
+<delete id="deleteASinfo" parameterType="string">
+	DELETE FROM as_information WHERE as_info_seq=#{asInfoSeq}
+<![CDATA[
+]]>
+</delete>
+<delete id="deleteholiday">
+	DELETE FROM holiday WHERE user_id=#{userId} AND store_seq=#{storeSeq}
+</delete>
+
+</mapper>

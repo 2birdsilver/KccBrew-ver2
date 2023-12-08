@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+body {
+	background-color: #eef4ff;
+}
+
+.notice {
+	padding: 20px 0;
+	width: 700px;
+	margin: auto;
+	margin-top: 30px;
+	background-color: #ffffff;
+}
+
+.category {
+	width: 97%;
+	height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #E0E0E0;
+	font-size: 1rem;
+	margin-bottom: 20px;
+}
+
+.category>span {
+	left: 30px;
+	top: 15px;
+	position: relative;
+}
+
+.text-center{
+	width: 97%;
+	margin : 0 auto;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.text-center th {
+	background-color: #E0E0E0;
+	width: 230px;
+}
+.savecancle{
+	text-align: center;
+	padding:0 10px;
+}
+.save-btn {
+	margin-bottom: 10px;
+}
+.save-btn .cancel-btn{
+	display :inline-block;
+}
+.text-center td, .text-center th {
+    padding: 0.75rem;
+    vertical-align: center;
+    border: 1px solid #dee2e6;
+}
+.div{
+	left: 30px;
+	top: 20px;
+	position: relative;
+	font-size: 1.2rem;
+	font-weight: bolder;
+	padding-bottom: 20px;
+}

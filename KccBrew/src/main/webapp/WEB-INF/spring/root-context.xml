@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/cloud/aws/context http://www.springframework.org/schema/cloud/aws/context/spring-cloud-aws-context-1.2.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<!-- DAO -->
+	<mybatis-spring:scan base-package="kr.co.kccbrew.comm.main.dao"/>
+	<mybatis-spring:scan base-package="kr.co.kccbrew.notice.dao"/>
+	<!-- <mybatis-spring:scan base-package="kr.co.kccbrew.comm.login.dao"/> -->
+	<!-- <mybatis-spring:scan base-package="kr.co.kccbrew.comm.register.dao"/> -->
+	<mybatis-spring:scan base-package="kr.co.kccbrew.strMng.dao"/>
+	<mybatis-spring:scan base-package="kr.co.kccbrew.sysMng.cdMng.dao"/>
+	<mybatis-spring:scan base-package="kr.co.kccbrew.sysMng.fileMng.dao"/>
+	<mybatis-spring:scan base-package="kr.co.kccbrew.sysMng.logMng.dao"/>
+	<mybatis-spring:scan base-package="kr.co.kccbrew.schdlMng.dao"/>
+	<mybatis-spring:scan base-package="kr.co.kccbrew.asMng.dao"/>
+	<mybatis-spring:scan base-package="kr.co.kccbrew.asMng.asMod"/>
+	<mybatis-spring:scan base-package="kr.co.kccbrew.userMng.dao"/>
+	<mybatis-spring:scan base-package="kr.co.kccbrew.comm.security.dao" />
+	<mybatis-spring:scan base-package="kr.co.kccbrew.comm.util" />
+	<mybatis-spring:scan base-package="kr.co.kccbrew.sysMng.statistics.dao" />
+	<mybatis-spring:scan base-package="kr.co.kccbrew.comm.chat.dao" />
+	<mybatis-spring:scan base-package="kr.co.kccbrew.sysMng.alarm.dao" />
+	<mybatis-spring:scan base-package="kr.co.kccbrew.batch.config" />
+	<mybatis-spring:scan base-package="kr.co.kccbrew.batch.dao" />
+
+
+	<!-- DAO -->
+	
+	<!--Service -->
+	<!-- <context:component-scan base-package="kr.co.kccbrew.comm.login.service"/> -->
+	<context:component-scan base-package="kr.co.kccbrew.comm.main.service"/>
+	<context:component-scan base-package="kr.co.kccbrew.notice.service"/>
+	<!-- <context:component-scan base-package="kr.co.kccbrew.comm.register.service"/> -->
+	<context:component-scan base-package="kr.co.kccbrew.strMng.service"/>
+	<context:component-scan base-package="kr.co.kccbrew.sysMng.statistics.service"/>
+	<context:component-scan base-package="kr.co.kccbrew.sysMng.cdMng.service"/>
+	<context:component-scan base-package="kr.co.kccbrew.sysMng.fileMng.service"/>
+	<context:component-scan base-package="kr.co.kccbrew.sysMng.logMng.service"/>
+	<context:component-scan base-package="kr.co.kccbrew.schdlMng.service"/>
+	<context:component-scan base-package="kr.co.kccbrew.asMng.service"/>
+	<context:component-scan base-package="kr.co.kccbrew.asMng.asMod"/>
+	<context:component-scan base-package="kr.co.kccbrew.userMng.service"/>
+	<context:component-scan base-package="kr.co.kccbrew.comm.security.service" />
+	<context:component-scan base-package="kr.co.kccbrew.comm.util" />
+	<context:component-scan base-package="kr.co.kccbrew.sysMng.statistics.service" />
+	<context:component-scan base-package="kr.co.kccbrew.comm.chat.service" />
+	<context:component-scan base-package="kr.co.kccbrew.sysMng.alarm.service" />
+		<mybatis-spring:scan base-package="kr.co.kccbrew.batch.config" />
+
+	<!--Service -->
+	<!-- @Transactional 사용하기 위한 태그 -->
+	<tx:annotation-driven/>
+	  <!-- 
+      Properties 파일을 읽어 오기 위한 태그 
+      Java코드에서 @Value('#{id['properties속성']}')
+		-->
+
+	<bean id="amazonS3Client" class="com.amazonaws.services.s3.AmazonS3Client">
+	</bean>
+	
+	
+	
+	
+	
+	
+	
+	
+</beans>

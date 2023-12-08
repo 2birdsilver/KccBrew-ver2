@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+html {
+	overflow: overlay;
+}
+
+#mainContainer {
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+}
+
+#mainHeader, #content, #mainFooter {
+	width: 100%;
+	position: static;
+}
+
+#main-content {
+	position: relative;
+	min-height: 750px;
+}
+
+.contents_warp {
+	width: 100%;
+}
+
+#mainSideMenu {
+	flex: 0.14;
+}
+
+#mainFooter {
+	
+}
+
+#page-container {
+	background-color: white !important;
+}
+
+#page-content {
+	background-color: white;
+	width: 1200px;
+    margin: auto;
+}
+
+#page-content-wrap {
+	background-color: #ffffff;
+}

@@ -1,0 +1,352 @@
+@charset "UTF-8";
+
+/* 바디 */
+body {
+	font-family: 'Noto Sans', 'Noto Sans KR', sans-serif !important;
+	font-size: 1.3em !important;
+}
+.heading-div{
+	margin:50px 0px 0px 0px;
+}
+.heading{
+	padding:10px 0px 0px 0px;
+	border-top: 1px solid #767676
+}
+/* 헤더 */
+.brand-logo {
+	width: 100%;
+	height: 100%;
+}
+ 
+.header-icon {
+	width: 100%;
+	color: white;
+}
+
+.user-image {
+	border-radius: 50px;
+}
+
+.header-icon-background {
+	width: 20px;
+	height: 20px;
+}
+
+.breadcrumb{
+	display:flex;
+}
+input{
+   width: 100%;
+   font-size: 14px;
+   line-height: 1.42857143;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   padding: 6px 12px;
+}
+select[name=machineCd]{
+    width: 100%;
+    max-width: initial;
+}
+#receipt-form>div{
+	display:flex;
+	margin-bottom:10px
+}
+#receipt-form>div>div{
+	flex:1;
+}
+#content{
+	background-color: #FFFFFF;
+    padding: 3px 100px;
+}
+#content>div{
+	margin:40px 0px;
+}
+.tag-image{
+	width:25px;
+}
+.flex-label-div{
+	justify-content: space-between;
+}
+.flex-label-div>div{
+	flex:0.5
+}
+.flex-label-div>div>h6{
+	margin:0;
+}
+.form-btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: navy;
+	color: white;
+	border: none;
+	padding: 5px 10px;
+	border-radius: 4px;
+	margin: auto;
+	width:80px;
+}
+.form-btn:hover{
+	background-color: #E6E6E6;
+	cursor: pointer;
+}
+.form-btn:visited{
+	color:white !important;		
+}
+#as-receipt-img{
+	height: 300px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#search-box {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#search-box th, #search-box td {
+	padding: 10px;
+	border: 0px;
+	border-bottom: 1px solid #ccc;
+	text-align: center;
+	vertical-align: middle;
+}
+#search-box th{
+	font-weight: bold;
+}
+.selectMcha{
+	width:100%;
+	line-hieght:2;
+}	
+
+.modal-reject{
+	display: none; /* 모달 초기에는 숨김 상태로 설정 */
+	position: fixed; /* 화면에 고정 */
+	z-index: 1; /* 다른 요소보다 위에 표시되도록 설정 */
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5); /* 반투명한 배경 색상 */
+	text-align: center;
+}
+.modal-rejectContent{
+	display: none; /* 모달 초기에는 숨김 상태로 설정 */
+	position: fixed; /* 화면에 고정 */
+	z-index: 1; /* 다른 요소보다 위에 표시되도록 설정 */
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5); /* 반투명한 배경 색상 */
+	text-align: center;
+	
+}
+.reject-content{
+	background-color: #fefefe;
+	margin: 10% auto; /* 모달을 수직, 수평 가운데로 위치시킴 */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 30%;
+	border-radius: 20px;
+	display: flex;
+	flex-direction: column;
+}
+.reject-content>form>div{
+	margin:30px;
+	display: flex;
+	justify-content: center;
+}
+.reject-content>form>div > button{
+	margin:0px 30px;
+	
+}
+.reject-content>form>textarea {
+	resize: none;
+	height:300px;
+}
+a{
+	text-decoration: none !important;
+}
+.content-textarea{
+	height:100px;
+	resize: none;
+}
+.in-decrease{
+	float:right;
+	margin:0px 10px
+}
+.in-decrease>span{
+	color:#ccc;
+	cursor:pointer
+}
+.in-decrease>span:hover{
+	color:black;
+}
+input[type=file]{
+	margin-bottom:10px;
+}
+
+.modal-result{
+	display: none; /* 모달 초기에는 숨김 상태로 설정 */
+	position: fixed; /* 화면에 고정 */
+	z-index: 1; /* 다른 요소보다 위에 표시되도록 설정 */
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5); /* 반투명한 배경 색상 */
+	text-align: center;
+}
+.result-content{
+	background-color: #fefefe;
+	margin: 10% auto; /* 모달을 수직, 수평 가운데로 위치시킴 */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 30%;
+	border-radius: 20px;
+	display: flex;
+	flex-direction: column;
+}
+.result-content>form>div{
+	margin:30px;
+	display: flex;
+	justify-content: center;
+}
+/* .result-content>form>div>button,div{
+	margin:0px 5px;
+} */
+.result-form fieldset{
+    display: inline-block;
+    direction: rtl;
+    border:0;
+}
+.result-form fieldset legend{
+    text-align: right;
+}
+.result-form input[type=radio]{
+    display: none;
+}
+.result-form label{
+    font-size: 3em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+.result-form label:hover{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+.result-form label:hover ~ label{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+.result-form input[type=radio]:checked ~ label{
+    text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+}
+.modal-heading{
+	font-size: 14px;
+	font-weight: normal;
+	text-align: left
+}
+
+/* 탭메뉴 */
+.tabNav {
+	position: relative;
+	margin-top: 3em;
+	margin-bottom: 7em;
+	display: table;
+	width: 100%;
+	border-top: 1px solid #eaeaea;
+	border-right: 1px solid #eaeaea;
+	border-bottom: 1px solid #eaeaea;
+}
+
+.tabNav:after {
+	display: block;
+	content: "";
+	clear: both;
+}
+
+.tabNav>li {
+	display: table-cell;
+}
+
+.tabNav div {
+	position: relative;
+	display: table;
+	width: 100%;
+	height: 3rem;
+	text-align: center;
+	font-size: 1.3rem;
+	color: #767676;
+	letter-spacing: -0.05em;
+	white-space: nowrap;
+	border-left: 1px solid #eaeaea;
+	transition: all .1s ease;
+	-webkit-transition: all .1s ease;
+}
+
+.tabNav div span {
+	display: table-cell;
+	width: 100%;
+	height: 100%;
+	line-height: 1.5em;
+	vertical-align: middle;
+	word-break: keep-all;
+}
+.tabNav span:hover{
+	color:white;
+} 
+.tab-div:hover{
+	cursor: pointer;
+}
+.tabNav div:hover, .tabNav .active div {
+	background-color: #043763;
+	color: #fff;
+	border-left: 1px solid #043763;
+}
+
+.tabNav div:hover::after, .tabNav .active div::after {
+	width: 100%;
+}
+
+
+.tabNav.col2>li {
+	width: 50%;
+}
+
+.tabNav.col3>li {
+	width: 33.33%;
+}
+
+.tabNav.col3_etc>li {
+	width: 30%;
+}
+
+.tabNav.col3_etc>li .last {
+	width: 10%;
+}
+
+.tabNav.col4, .tabNav.col5, .tabNav.col6, .tabNav.col7, .tabNav.col8 {
+	display: block;
+}
+
+.tabNav.col4>li, .tabNav.col5>li, .tabNav.col6>li, .tabNav.col7>li,
+	.tabNav.col8>li {
+	float: left;
+	display: inline-block;
+	width: 25%;
+}
+.tab-ul {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+	display: flex;
+}
+
+.tab-ul>li {
+	width: calc(100% * 1/ 2);
+}
+.as-result-info{
+	display:none;
+}
+.form-btn{
+	margin: 0; float: right;
+}

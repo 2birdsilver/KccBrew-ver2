@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="kr.co.kccbrew.sysMng.logMng.dao.ILogMngRepository">
+
+	<resultMap id="logResult"
+		type="kr.co.kccbrew.sysMng.logMng.model.LogMngVo">
+		<result property="logSeq" column="LOG_SEQ" />
+		<result property="date" column="LOG_DTTM" />
+		<result property="ip" column="IP_ADDR" />
+		<result property="userId" column="USER_ID" />
+		<result property="uri" column="API_ENDPOINT" />
+		<result property="statusCode" column="RSPN_STTS_CODE" />
+		<result property="view" column="VIEW_TMPLT" />
+		<result property="userType" column="USR_TYP" />
+	</resultMap>
+
+	<!-- 로그 삽입 -->
+	<insert id="insertLog"
+		parameterType="kr.co.kccbrew.sysMng.logMng.model.LogMngVo">
+		<selectKey keyProperty="logSeq" resultType="int"
+			order="BEFORE">
+			SELECT LOG_SEQ.nextval FROM DUAL
+		</selectKey>
+  <![CDATA[
+    INSERT INTO LOG (
+      LOG_SEQ, 
+      LOG_DTTM, 
+      IP_ADDR, 
+      USER_ID, 
+      API_ENDPOINT,
+      RSPN_STTS_CODE,
+      VIEW_TMPLT,
+      USR_TYP
+    )
+    VALUES (
+      #{logSeq},
+      #{date}, 
+      #{ip}, 
+      #{userId},
+      #{uri},
+      #{statusCode},
+      #{view},
+      #{userType}
+    )
+  ]]>
+	</insert>
+
+	<!-- 로그 전체 조회 -->
+	<select id="selectAllLogs" resultMap="logResult">
+      <![CDATA[
+        select * from log order by LOG_SEQ asc
+      ]]>
+	</select>
+
+
+
+	<!-- 검색된 로그 조회 -->
+	<select id="selectSearchedLogs" resultMap="logResult"
+		parameterType="java.util.Map">
+		SELECT 
+		LOG_SEQ, TO_TIMESTAMP(TO_CHAR(LOG_DTTM, 'mm/dd/yyyy hh24:mi:ss'), 'mm/dd/yyyy hh24:mi:ss') AS LOG_DTTM, IP_ADDR, USER_ID, API_ENDPOINT, RSPN_STTS_CODE, USR_TYP, VIEW_TMPLT
+		FROM (
+		SELECT
+		ROW_NUMBER() OVER(ORDER BY LOG_SEQ DESC) AS
+		ROW_NUM, LOG.*
+		FROM LOG
+		WHERE 1=1
+
+		<!-- 검색 조건 -->
+       <![CDATA[AND (TRUNC(LOG_DTTM) <= #{logMngVo.endDate} AND TRUNC(LOG_DTTM) >= #{logMngVo.startDate})]]>
+		<if test="logMngVo.uri != null and logMngVo.uri != ''">
+			AND API_ENDPOINT = #{logMngVo.uri}
+		</if>
+		<if test="logMngVo.view != null and logMngVo.view != ''">
+			AND VIEW_TMPLT = #{logMngVo.view}
+		</if>
+		<if test="logMngVo.userId != null and logMngVo.userId != ''">
+			AND USER_ID = #{logMngVo.userId}
+		</if>
+		<if test="logMngVo.userType != null and logMngVo.userType != ''">
+			AND USR_TYP = #{logMngVo.userType}
+		</if>
+		<if test="logMngVo.ip != null and logMngVo.ip != ''">
+			AND IP_ADDR = #{logMngVo.ip}
+		</if>
+		<if
+			test="logMngVo.statusCode != null and logMngVo.statusCode != ''">
+			AND RSPN_STTS_CODE = #{logMngVo.statusCode}
+		</if>
+		)
+<![CDATA[ WHERE ROW_NUM BETWEEN #{firstRowNum} AND #{lastRowNum} ]]>
+	</select>
+
+
+
+
+	<!-- 검색된 로그 개수 조회 -->
+	<select id="getSearchedLogsCount"
+		parameterType="kr.co.kccbrew.sysMng.logMng.model.LogMngVo"
+		resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM (
+		SELECT
+		ROW_NUMBER() OVER(ORDER BY LOG_SEQ) AS
+		ROW_NUM, LOG.*
+		FROM LOG
+		WHERE 1=1
+		<!-- 검색 조건 -->
+       <![CDATA[AND (TRUNC(LOG_DTTM) <= #{endDate} AND TRUNC(LOG_DTTM) >= #{startDate})]]>
+		<if test="uri != null and uri != ''">
+			AND API_ENDPOINT = #{uri}
+		</if>
+		<if test="view != null and view != ''">
+			AND VIEW_TMPLT = #{view}
+		</if>
+		<if test="userId != null and userId != ''">
+			AND USER_ID = #{userId}
+		</if>
+		<if test="userType != null and userType != ''">
+			AND USR_TYP = #{userType}
+		</if>
+		<if test="ip != null and ip != ''">
+			AND IP_ADDR = #{ip}
+		</if>
+		<if test="statusCode != null and statusCode != ''">
+			AND RSPN_STTS_CODE = #{statusCode}
+		</if>
+		)
+	</select>
+
+
+
+
+</mapper>
