@@ -2,9 +2,7 @@ package kr.co.kccbrew.sysMng.statistics.service;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.ibatis.annotations.Param;
+import jakarta.servlet.http.HttpServletResponse;
 
 import kr.co.kccbrew.asMng.model.AsMngVo;
 import kr.co.kccbrew.sysMng.statistics.model.StatisticsVo;
@@ -15,19 +13,18 @@ public interface IStatisticsService {
 	 * @param date : 해당 달
 	 * @return
 	 */
-	public List<StatisticsVo> machineByMonth(@Param("date")String date);
+	public List<StatisticsVo> machineByMonth(String date);
 	/**
 	 * 평점 상위/하위 기사
 	 * @param date
 	 * @return
 	 */
-	public List<StatisticsVo> highRankMecha(@Param("date")String date);
-	public List<StatisticsVo> lowRankMecha(@Param("date")String date);
+	public List<StatisticsVo> highRankMecha(String date);
+	public List<StatisticsVo> lowRankMecha(String date);
 	
 	/**
 	 * 장비별 월별 재접수율
-	 * @param start
-	 * @param end
+	 * @param date
 	 * @return
 	 */
 	public List<StatisticsVo> reapplyRateByMachine(String date);

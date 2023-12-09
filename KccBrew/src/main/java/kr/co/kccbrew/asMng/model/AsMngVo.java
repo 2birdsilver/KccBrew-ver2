@@ -5,9 +5,9 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
 
+import kr.co.kccbrew.batch.AsLogVo;
 import org.springframework.web.multipart.MultipartFile;
 
-import kr.co.kccbrew.batch.AsLogVo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -69,7 +69,7 @@ public class AsMngController {
 	 */
 	@RequestMapping(value="/as-list",method=RequestMethod.GET)
 	public String as(Model model,HttpSession session) {
-		AsMngVo asMngVo=new AsMngVo();
+		AsMngVo asMngVo = new AsMngVo();
 		UserVo userVo=(UserVo)session.getAttribute("user");
 		asMngVo.setUserId(userVo.getUserId());
 		System.out.println(asMngVo);

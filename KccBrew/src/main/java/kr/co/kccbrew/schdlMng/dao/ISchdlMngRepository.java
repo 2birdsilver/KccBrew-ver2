@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Mapper; 
 import org.springframework.stereotype.Repository;
 
 import kr.co.kccbrew.comm.security.model.UserVo;
@@ -14,7 +13,6 @@ import kr.co.kccbrew.schdlMng.model.HolidayVo;
 import kr.co.kccbrew.schdlMng.model.SchdlMngVo;
 
 @Repository
-@Mapper
 public interface ISchdlMngRepository {
 
 	/*휴가 리스트 조회*/

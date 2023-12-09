@@ -2,9 +2,6 @@ package kr.co.kccbrew.userMng.dao;
 
 import java.util.List;
 import java.util.Map;
-
-import org.apache.ibatis.annotations.Param;
-
 import kr.co.kccbrew.userMng.model.UserMngVo;
 
 public interface IUserMngRepository {
@@ -12,8 +9,8 @@ public interface IUserMngRepository {
 	int getUserCount(Map<String, Object> map);
 	List<UserMngVo> newList();
 	 UserMngVo findByUserId(String userId);
-	 List<UserMngVo> findByUserInfo(@Param("userId") String userId);
-	 List<UserMngVo> findByUserInfo2(@Param("userId") String userId);
+	 List<UserMngVo> findByUserInfo(String userId);
+	 List<UserMngVo> findByUserInfo2(String userId);
 	 void save(UserMngVo userMngVo);
 	 void userMod(UserMngVo userMngVo);
 	 int getNewCount();

@@ -4,13 +4,11 @@ package kr.co.kccbrew.sysMng.logMng.dao;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import kr.co.kccbrew.sysMng.logMng.model.LogMngVo;
 
 @Repository
-@Mapper
 public interface ILogMngRepository {
 	public void insertLog(LogMngVo log);
 	

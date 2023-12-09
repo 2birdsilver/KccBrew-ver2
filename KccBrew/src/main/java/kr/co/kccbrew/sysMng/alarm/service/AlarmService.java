@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -20,7 +20,7 @@ import org.springframework.web.socket.WebSocketSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import kr.co.kccbrew.batch.JobDemo;
+
 import kr.co.kccbrew.sysMng.alarm.controller.EchoHandler;
 import kr.co.kccbrew.sysMng.alarm.dao.IAlarmRepository;
 import kr.co.kccbrew.sysMng.alarm.model.AlarmVo;

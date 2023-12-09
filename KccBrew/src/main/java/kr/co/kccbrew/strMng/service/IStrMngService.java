@@ -2,8 +2,6 @@ package kr.co.kccbrew.strMng.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import kr.co.kccbrew.strMng.model.StrMngVo;
 
 
@@ -14,7 +12,7 @@ public interface IStrMngService {
 	List<StrMngVo> locationNm();
 	List<StrMngVo> locationNmSeoul();
 	List<StrMngVo> ownerList(int storeSeq);
-	List<StrMngVo> search(@Param("keyword") String keyword); 
+	List<StrMngVo> search(String keyword);
 	StrMngVo storeDetail(int storeSeq);
 	void insert(StrMngVo store);
 	void update(StrMngVo store);
@@ -30,7 +28,7 @@ public interface IStrMngService {
 	 * @param userId
 	 * @param storeSeq
 	 */
-	public void insertStr(@Param("userId")String userId,@Param("storeSeq")String storeSeq);
+	public void insertStr(String userId,String storeSeq);
 	/**
 	 * 점포 제거
 	 * @param userId

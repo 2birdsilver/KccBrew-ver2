@@ -104,7 +104,7 @@ public class AsMngService implements IAsMngService{
 
 	/**
 	 * 사용자 사진 등록
-	 * @param user : 회원가입 사용자 정보 담긴 Vo
+	 * @param asMngVo : 회원가입 사용자 정보 담긴 Vo
 	 * @return : 회원가입 사용자 정보 담긴 Vo
 	 */
 	@Transactional

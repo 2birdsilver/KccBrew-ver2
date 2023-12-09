@@ -1,9 +1,7 @@
 package kr.co.kccbrew.comm.util;
 
-import org.apache.ibatis.annotations.Mapper; 
 import org.springframework.stereotype.Repository;
 
-@Mapper
 @Repository
 public interface IObjectUtilRepository {
 	

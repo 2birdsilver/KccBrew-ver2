@@ -2,7 +2,6 @@ package kr.co.kccbrew.comm.security.service;
 
 import java.util.List; 
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.kccbrew.asMng.model.AsMngVo;
@@ -28,7 +27,7 @@ public interface IUserService {
 	 * @param keyword : 검색 키워드
 	 * @return 키워드로 검색된 점포 목록 갯수
 	 */
-	public int countStoreList(@Param("keyword")String keyword);
+	public int countStoreList(String keyword);
 	
 	/**
 	 * 운영하고 있는 장비군 리스트를 조회한다.

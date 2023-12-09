@@ -3,9 +3,6 @@ package kr.co.kccbrew.strMng.dao;
 
 import java.util.List;
 import java.util.Map;
-
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import kr.co.kccbrew.asMng.model.AsMngVo;
@@ -19,7 +16,7 @@ public interface IStrMngRepository {
 	List<StrMngVo> ownerList(int storeSeq);
 	List<StrMngVo> locationNm();
 	List<StrMngVo> locationNmSeoul();
-	List<StrMngVo> search(@Param("keyword") String keyword); 
+	List<StrMngVo> search(String keyword);
 	StrMngVo storeDetail(int storeSeq);
 	void insert(StrMngVo store);
 	void update(StrMngVo store);
@@ -30,28 +27,28 @@ public interface IStrMngRepository {
 	 * 내 계정에 등록된 점포 조회
 	 * @return
 	 */
-	public List<StrMngVo> selectMyStr(@Param("userId")String userId);
+	public List<StrMngVo> selectMyStr(String userId);
 	/**
 	 * 내 계정에 점포 추가 등록
 	 * @param userId
 	 * @param storeSeq
 	 */
-	public void insertStr(@Param("userId")String userId,@Param("storeSeq")String storeSeq);
+	public void insertStr(String userId,String storeSeq);
 	/**
 	 * 점포 제거
 	 * @param userId
 	 * @param storeSeq
 	 */
-	void deleteStr(@Param("userId")String userId,@Param("storeSeq")String storeSeq);
+	void deleteStr(String userId,String storeSeq);
 	List<StrMngVo> strAllFilter(StrMngVo strMngVo);
 	
 	/**
 	 * 계정내 점포 삭제, 해당 계정으로 등록한 AS 목록 삭제
 	 * @return
 	 */
-	List<AsMngVo> selectDeleteAsList(@Param("userId")String userId,@Param("storeSeq")String storeSeq);
-	void deleteASresult(@Param("asResultSeq")String asResultSeq);
-	void deleteASAssign(@Param("asAssignSeq")String asAssignSeq);
-	void deleteASinfo(@Param("asInfoSeq")String asInfoSeq);
-	void deleteholiday(@Param("userId")String userId,@Param("storeSeq")String storeSeq);
+	List<AsMngVo> selectDeleteAsList(String userId,String storeSeq);
+	void deleteASresult(String asResultSeq);
+	void deleteASAssign(String asAssignSeq);
+	void deleteASinfo(String asInfoSeq);
+	void deleteholiday(String userId,String storeSeq);
 }

@@ -3,8 +3,6 @@ package kr.co.kccbrew.comm.security.service;
 
 
 import java.util.List;
-
-import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +16,6 @@ public class UserSearchService implements IUserSearchService {
 	
 	@Autowired
 	private IUserSearchRepository userSearchRepository;
-	private SqlSessionTemplate sqlSession;
 	
 	/**
 	 * @return 아이디찾기

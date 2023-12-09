@@ -2,9 +2,6 @@ package kr.co.kccbrew.comm.security.dao;
 
 import java.util.List;
 import java.util.Map;
-
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +9,6 @@ import kr.co.kccbrew.asMng.model.AsMngVo;
 import kr.co.kccbrew.comm.security.model.UserVo;
 import kr.co.kccbrew.strMng.model.StrMngVo;
 
-@Mapper
 @Repository
 public interface IUserRepository {
     
@@ -32,14 +28,14 @@ public interface IUserRepository {
 	 * @param end : 끝 번호
 	 * @return 운영중인 점포 리스트
 	 */
-	public List<UserVo> selectStoreList(@Param("keyword")String keyword,@Param("start")int start,@Param("end")int end);
+	public List<UserVo> selectStoreList(String keyword,int start,int end);
 	
 	/**
 	 * 
 	 * @param keyword : 검색 키워드
 	 * @return 키워드로 검색된 점포 목록 갯수
 	 */
-	public int countStoreList(@Param("keyword")String keyword);
+	public int countStoreList(String keyword);
 	
 	/**
 	 * 사용중인 장비군 목록 조회
@@ -52,7 +48,7 @@ public interface IUserRepository {
 	 * @param userId
 	 * @return 입력한 아이디를 조회했을 때 갯수 
 	 */
-	public int checkUserId(@Param("userId")String userId);
+	public int checkUserId(String userId);
 	
 	/**
 	 * 지역코드 목록 조회
@@ -64,7 +60,7 @@ public interface IUserRepository {
 	 * 지역코드 상세 목록 조회
 	 * @return 지역코드 상세
 	 */
-	public List<UserVo> selectLocationDtlCd(@Param("locationCd")String locationCd);
+	public List<UserVo> selectLocationDtlCd(String locationCd);
 	
 	/**
 	 * 사용자 사진 파일 기본 정보 등록
@@ -84,7 +80,7 @@ public interface IUserRepository {
 	 * @param userId : 회원가입한 사용자 아이디
 	 * @param StoreSeq : 선택한 점포 
 	 */
-	public void insertStoreUserMap(@Param("userId")String userId,@Param("storeId")int StoreSeq);
+	public void insertStoreUserMap(String userId,int StoreSeq);
 	
 	/**
 	 * 회원ID에 따른 AS신청(배정전) 리스트 조회

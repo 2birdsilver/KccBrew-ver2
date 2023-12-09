@@ -2,8 +2,6 @@ package kr.co.kccbrew.sysMng.cdMng.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import kr.co.kccbrew.sysMng.cdMng.model.CdMngVo;
 
 

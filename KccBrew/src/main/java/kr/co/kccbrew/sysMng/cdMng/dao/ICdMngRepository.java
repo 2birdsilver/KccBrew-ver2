@@ -2,8 +2,6 @@ package kr.co.kccbrew.sysMng.cdMng.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import kr.co.kccbrew.sysMng.cdMng.model.CdMngVo;
 
 
@@ -14,9 +12,9 @@ public interface ICdMngRepository {
 	/* 그룹코드 조회 */
 	List<CdMngVo> grcdList();
 	/* 상세코드 조회 */
-	List<CdMngVo> grcdDtlList(@Param("cdId")String cdId);
+	List<CdMngVo> grcdDtlList(String cdId);
 	/* 상세코드 상세조회 */
-	CdMngVo selectCd(@Param("cdId")String cdId, @Param("cdDtlId")String cdDtlId);
+	CdMngVo selectCd(String cdId, String cdDtlId);
 	/* 그룹코드 상세조회 */
 	CdMngVo selectGrpDetail(String cdId);
 	/* 그룹코드 등록 */

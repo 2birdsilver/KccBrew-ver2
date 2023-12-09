@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import javax.websocket.OnClose;
-import javax.websocket.OnMessage;
-import javax.websocket.OnOpen;
-import javax.websocket.Session;
-import javax.websocket.server.PathParam;
-import javax.websocket.server.ServerEndpoint;
+import jakarta.websocket.OnClose;
+import jakarta.websocket.OnMessage;
+import jakarta.websocket.OnOpen;
+import jakarta.websocket.Session;
+import jakarta.websocket.server.PathParam;
+import jakarta.websocket.server.ServerEndpoint;
 /**
  * @ClassNmae : UserSocket
  * @Decription : 실시간 문의 채팅을 위한 사용자소켓

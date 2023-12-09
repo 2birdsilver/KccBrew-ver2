@@ -6,9 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -20,8 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.google.common.collect.Lists;
 
 import kr.co.kccbrew.comm.security.model.UserVo;
 import kr.co.kccbrew.comm.util.DateFormat;
@@ -79,9 +77,9 @@ public class LogMngController {
 	/**
 	 * 로그조회 - 로그조회 페이지 요청할 때 페이지 반환한다.
 	 * 
-	 * @param int currentPage - 현재 페이지 
-	 * @param LogMngVo searchContent - model에 추가하기 위한 LogMngVo객체
-	 * @param Model model - 데이터를 저장해서 jsp에 뿌려줄 용도
+	 * @param currentPage - 현재 페이지
+	 * @param searchContent - model에 추가하기 위한 LogMngVo객체
+	 * @param model - 데이터를 저장해서 jsp에 뿌려줄 용도
 	 * 
 	 * @return data(Map<String, Object>) - 페이징과 검색에 따른 로그 데이터를 저장한 map
 	 * @throws 
@@ -134,10 +132,8 @@ public class LogMngController {
 	/**
 	 * 로그검색 - 검색한 조건에 따른 로그 데이터를 반환한다.
 	 * 
-	 * @param int currentPage - 현재 페이지 
-	 * @param String startDate - 날짜 검색 시작일
-	 * @param String endDate - 날짜 검색 종료일
-	 * @param LogMngVo logMngVo - 로그검색조건
+	 * @param currentPage - 현재 페이지
+	 * @param logMngVo - 로그검색조건
 	 * 
 	 * @return data(Map<String, Object>) - 페이징과 검색에 따른 로그 데이터를 저장한 map
 	 */

@@ -2,14 +2,10 @@ package kr.co.kccbrew.comm.main.dao;
 
 import java.time.LocalDate;
 import java.util.List;
-
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import kr.co.kccbrew.comm.main.model.MainPageVo;
 
-@Mapper
 @Repository
 public interface IMainRepository {
 	List<MainPageVo> showAllAsAssignList();     // a/s 배정 리스트 
@@ -22,7 +18,7 @@ public interface IMainRepository {
 	List<MainPageVo> showStoreInfoListById(String userId);  //점포 정보 리스트
 	
 	List<MainPageVo> selectLocationCd();					//지역 코드 조회
-	List<MainPageVo> selectLocationDtlCd(@Param("mechaLocationCode")String locationCd); //지역 코드 상세 조회
+	List<MainPageVo> selectLocationDtlCd(String locationCd); //지역 코드 상세 조회
 	
 	void updateMyProfile(MainPageVo mainPageVo); 			//이미지 포함한 마이페이지 정보 업데이트 
 	void updateMyProfileExceptImg(MainPageVo mainPageVo); 	//이미지 제외한 정보만 업데이트
@@ -36,8 +32,8 @@ public interface IMainRepository {
 	List<MainPageVo> showAsResultListbyId(String userId);	//특정 아이디의 결과 리스트
 	List<MainPageVo> showAsAssignListbyMechaId(String userId); //수리기사의 배정 리스트
 	List<MainPageVo> showAsResultListbyMechaId(String userId); //수리기사의 결과 리스트
-	List<MainPageVo> getDataInRange(@Param("startOfWeek") LocalDate startOfWeek, @Param("endOfWeek") LocalDate endOfWeek); //전체 a/s 일정 날짜 별로 구분해서 보기
-	List<MainPageVo> getMechaDataInRangeById(@Param("userId") String userId, @Param("startOfWeek") LocalDate startOfWeek, @Param("endOfWeek") LocalDate endOfWeek); //특정 수리기사의 a/s 일정 날짜 별로 보기
-	List<MainPageVo> getDataInRangeById(@Param("userId") String userId, @Param("startOfWeek") LocalDate startOfWeek, @Param("endOfWeek") LocalDate endOfWeek); //특정 사용자의 a/s 일정 날짜 별로 보기
+	List<MainPageVo> getDataInRange(LocalDate startOfWeek, LocalDate endOfWeek); //전체 a/s 일정 날짜 별로 구분해서 보기
+	List<MainPageVo> getMechaDataInRangeById(String userId, LocalDate startOfWeek, LocalDate endOfWeek); //특정 수리기사의 a/s 일정 날짜 별로 보기
+	List<MainPageVo> getDataInRangeById(String userId, LocalDate startOfWeek, LocalDate endOfWeek); //특정 사용자의 a/s 일정 날짜 별로 보기
     String getUserName(String userId);
 }

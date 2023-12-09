@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -58,8 +58,7 @@ public class StatisticsService implements IStatisticsService{
 	
 	/**
 	 * 장비별 월별 재접수율
-	 * @param start
-	 * @param end
+	 * @param date
 	 * @return
 	 */
 	@Override
