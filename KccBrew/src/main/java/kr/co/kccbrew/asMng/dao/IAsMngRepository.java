@@ -3,15 +3,14 @@ package kr.co.kccbrew.asMng.dao;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+
 import org.springframework.stereotype.Repository;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
 import kr.co.kccbrew.asMng.model.AsMngVo;
 
-@Mapper
+
 @Repository
 public interface IAsMngRepository {
 	/**
@@ -30,7 +29,7 @@ public interface IAsMngRepository {
 	 * 점포 정보 조회
 	 * @return 로그인한 아이디로 매핑된 점포 정보 
 	 */
-	public List<AsMngVo> selectStrInfo(@Param("userId")String userId);
+	public List<AsMngVo> selectStrInfo(String userId);
 	
 	/**
 	 * AS 이미지 파일 등록
@@ -51,47 +50,50 @@ public interface IAsMngRepository {
 	
 	/**
 	 * AS detail 조회
-	 * @param asInfoSeq : seq 번호
-	 * @return
+	 * @param asInfoSeq seq번호
+	 * @param asAssignSeq 수리배정번호
+	 * @param storeSeq 점포번호
+	 * @return AsMngVo
 	 */
-	public AsMngVo selectAsInfoDetail(@Param("asInfoSeq")String asInfoSeq,@Param("asAssignSeq")String asAssignSeq,@Param("storeSeq")String storeSeq);
+	public AsMngVo selectAsInfoDetail(String asInfoSeq,String asAssignSeq,String storeSeq);
 	
 	/**
 	 * AS건에 등록한 파일 정보 조회
 	 * @param fileDtlId
 	 * @return
 	 */
-	public List<AsMngVo> selectAsImg(@Param("asImgSeq")String fileDtlId);
+	public List<AsMngVo> selectAsImg(String fileDtlId);
 	
 	/**
 	 * 코드 조회
-	 * @param locationCd
+	 * @param code
 	 * @return
 	 */
-	public List<AsMngVo> selectCd(@Param("code")String code);
+	public List<AsMngVo> selectCd(String code);
 	
 	/**
 	 * 지역 상세코드 조회
 	 * @param locationCd
 	 * @return
 	 */
-	public List<AsMngVo> selectLocationDtlCd(@Param("locationCd")String locationCd);
+	public List<AsMngVo> selectLocationDtlCd(String locationCd);
 	
 	/**
 	 * 선택한 날짜에 점포 휴일 체크
 	 * @param date 선택 날짜
-	 * @param userId AS 신청인
+	 * @param storeSeq AS 신청인
 	 * @return
 	 */
-	public int checkStrSchedule(@Param("date")String date,@Param("storeSeq")String storeSeq);
+	public int checkStrSchedule(String date,String storeSeq);
 	
 	/**
 	 * 
 	 * @param date 방문 선택 날짜
 	 * @param locationCd 지역 코드
-	 * @return
+	 * @param machineCd 장비코드
+	 * @return List<AsMngVo>
 	 */
-	public List<AsMngVo> selectMechList(@Param("date")String date,@Param("locationCd")String locationCd,@Param("machineCd")String machineCd);
+	public List<AsMngVo> selectMechList(String date,String locationCd,String machineCd);
 	
 	/**
 	 * 기사 배정
@@ -108,8 +110,8 @@ public interface IAsMngRepository {
 	/**
 	 * 반려 등록
 	 */
-	public void updateInfoReject(@Param("seq")String seq,@Param("content")String content,@Param("userId")String userId);
-	public void updateAssignReject(@Param("seq")String seq,@Param("content")String content,@Param("userId")String userId);
+	public void updateInfoReject(String seq,String content,String userId);
+	public void updateAssignReject(String seq,String content,String userId);
 	
 	/**
 	 * 기사의 배정 반려건에 대한 처리
@@ -137,6 +139,6 @@ public interface IAsMngRepository {
 	 * AS 접수 취소
 	 * @param asInfoSeq
 	 */
-	public void deleteAs(@Param("asInfoSeq")String asInfoSeq);
-	public List<AsMngVo> getAsHistory(@Param("asInfoSeq")String asInfo,@Param("userCd")String userTypeCd);
+	public void deleteAs(String asInfoSeq);
+	public List<AsMngVo> getAsHistory(String asInfo,String userTypeCd);
 }

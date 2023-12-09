@@ -2,10 +2,8 @@ package kr.co.kccbrew.asMng.service;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.ibatis.annotations.Param;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Service;
 
 import kr.co.kccbrew.asMng.model.AsMngVo;
@@ -63,12 +61,12 @@ public interface IAsMngService {
 	 * @param locationCd
 	 * @return
 	 */
-	public List<AsMngVo> selectLocationDtlCd(@Param("locationCd")String locationCd);
+	public List<AsMngVo> selectLocationDtlCd(String locationCd);
 	
 	/**
 	 * 선택한 날짜에 점포 휴일 체크
 	 * @param date 선택 날짜
-	 * @param userId AS 신청인
+	 * @param storeSeq AS 신청인
 	 * @return
 	 */
 	public int checkStrSchedule(String date,String storeSeq);
@@ -116,7 +114,7 @@ public interface IAsMngService {
 	 * AS 접수 취소
 	 * @param asInfoSeq
 	 */
-	public void deleteAs(@Param("asInfoSeq")String asInfoSeq);
+	public void deleteAs(String asInfoSeq);
 
 	public List<AsMngVo> getAsHistory(String asInfo, String userTypeCd);
 	

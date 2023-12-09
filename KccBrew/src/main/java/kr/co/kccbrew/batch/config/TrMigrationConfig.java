@@ -7,19 +7,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
-import org.apache.ibatis.session.ExecutorType;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.SqlSessionTemplate;
-import org.mybatis.spring.batch.MyBatisBatchItemWriter;
-import org.mybatis.spring.batch.MyBatisPagingItemReader;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.annotation.DefaultBatchConfigurer;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
-import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.JobScope;
-import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.ItemProcessor;
@@ -66,12 +57,6 @@ import javax.sql.DataSource;
 @ComponentScan("kr.co.kccbrew.batch")
 @Component
 public class TrMigrationConfig extends DefaultBatchConfigurer{
-
-	@Autowired
-	private JobBuilderFactory jobBuilderFactory;
-
-	@Autowired
-	private StepBuilderFactory stepBuilderFactory;
 	
 	@Autowired MybatisItemProcessor mybatisItemProcessor;
 	
