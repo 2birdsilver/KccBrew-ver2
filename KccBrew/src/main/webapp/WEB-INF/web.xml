@@ -10,7 +10,6 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 			<param-value>
 				/WEB-INF/spring/security-context.xml
 				/WEB-INF/spring/root-context.xml
-				/WEB-INF/spring/database.xml			
 				/WEB-INF/spring/appServlet/servlet-context.xml
 			</param-value>
 		</init-param>
@@ -24,7 +23,6 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		<param-value>
 			/WEB-INF/spring/security-context.xml
 			/WEB-INF/spring/root-context.xml
-			/WEB-INF/spring/database.xml
 		</param-value>
 	</context-param>
 

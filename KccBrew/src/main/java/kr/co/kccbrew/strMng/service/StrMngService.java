@@ -28,7 +28,7 @@ public class StrMngService implements IStrMngService {
 	 * 
 	 * @author BAESOOYEON
 	 */
-	private final IStrMngRepository storeRepository;
+	private IStrMngRepository storeRepository;
 
 	@Override
 	public List<StrMngVo> storeAll(StrMngVo strMngVo) {

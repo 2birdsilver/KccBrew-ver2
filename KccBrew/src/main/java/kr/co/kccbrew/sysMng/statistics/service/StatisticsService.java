@@ -31,7 +31,7 @@ public class StatisticsService implements IStatisticsService{
 	/**
 	 * IStatisticsRepository 변수 선언
 	 */
-	private final IStatisticsRepository repository;
+	private IStatisticsRepository repository;
 	
 	/**
 	 * 장비별 AS 건수 조회

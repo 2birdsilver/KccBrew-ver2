@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class CdMngService implements ICdMngService {
 
-	private final ICdMngRepository cdMngRepository;
+	private ICdMngRepository cdMngRepository;
 
 	/* 그룹코드 중복제거 리스트 */
 	@Override

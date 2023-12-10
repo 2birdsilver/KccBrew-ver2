@@ -19,8 +19,8 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class MainService implements IMainService{
-	private final IMainRepository mainRepository;
-	private final S3Service s3Service;
+	private IMainRepository mainRepository;
+	private S3Service s3Service;
 	//배정 리스트
 	@Override
 	public List<MainPageVo> showAllAsAssignList() {

@@ -22,9 +22,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Service
 public class UserService implements IUserService{
-	@Autowired
 	private IUserRepository userRepository;
-	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
 	private final S3Service s3Service;

@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class FileMngService implements IFileMngService {
 
-	private final IFileMngRepository fileMngRepository;
+	private IFileMngRepository fileMngRepository;
 	
 	/**
 	 * 

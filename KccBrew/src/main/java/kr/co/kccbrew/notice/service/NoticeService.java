@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class NoticeService implements INoticeService{
-	private final INoticeRepository noticeRepository;
+	private INoticeRepository noticeRepository;
 	
 	// 공지사항 총 개수 조회
 	@Override

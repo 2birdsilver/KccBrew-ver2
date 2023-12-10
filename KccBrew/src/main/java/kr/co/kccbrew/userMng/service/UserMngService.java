@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserMngService implements IUserMngService {
 
-	private final IUserMngRepository userMngRepository;
+	private IUserMngRepository userMngRepository;
 	
 	@Override
 	public List<UserMngVo> userList(UserMngVo userMngVo, int page) {

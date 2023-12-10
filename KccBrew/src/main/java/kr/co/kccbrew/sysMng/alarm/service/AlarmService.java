@@ -30,10 +30,8 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class AlarmService implements IAlarmService{
 
-	@Autowired
 	private IAlarmRepository alarmRepository;
 
-	@Override
 	public void addAlarm(AlarmVo alarmVo) {
 		alarmRepository.insertAlarm(alarmVo);
 	}

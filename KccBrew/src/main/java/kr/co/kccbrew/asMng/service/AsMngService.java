@@ -40,7 +40,7 @@ public class AsMngService implements IAsMngService{
 	/**
 	 * asRepository 변수 선언
 	 */
-	private final IAsMngRepository asRepository;
+	private IAsMngRepository asRepository;
 	
 	
 	/** 

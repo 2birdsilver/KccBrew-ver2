@@ -44,7 +44,6 @@ import lombok.RequiredArgsConstructor;
 public class UserSearchController {
 	@Autowired
 	private IUserSearchService searchService;
-	@Autowired
 	private PasswordEncoder passwordEncoder;
 
 	@Autowired

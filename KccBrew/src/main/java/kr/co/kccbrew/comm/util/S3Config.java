@@ -17,17 +17,17 @@ import lombok.Setter;
 @Configuration
 public class S3Config {
     
-    @Value("${cloud.aws.credentials.accessKey}")
+/*    @Value("${cloud.aws.credentials.accessKey}")
     public String accessKey;
     @Value("${cloud.aws.credentials.secretKey}")
     public String secretKey;
     @Value("${cloud.aws.s3.bucketName}")
     public String bucketName;
     @Value("${cloud.aws.region.static}")
-    public String region;
+    public String region;*/
     
     
-    @Bean
+/*    @Bean
     public AmazonS3 amazonS3() {
         AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
         return AmazonS3ClientBuilder
@@ -35,5 +35,5 @@ public class S3Config {
                 .withCredentials(new AWSStaticCredentialsProvider(credentials))
                 .withRegion(region)
                 .build();
-    }
+    }*/
 }

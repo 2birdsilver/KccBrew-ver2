@@ -32,7 +32,6 @@ import kr.co.kccbrew.strMng.model.StrMngVo;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService{
-	@Autowired
 	private IUserRepository userRepository;
 
 	@Override

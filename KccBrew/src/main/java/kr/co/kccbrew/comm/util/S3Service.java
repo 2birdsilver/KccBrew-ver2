@@ -23,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @Service
 public class S3Service {
-		private final AmazonS3Client amazonS3Client;
+		private AmazonS3Client amazonS3Client;
 
 //	    @Value("${cloud.aws.s3.bucketName}")
 	    private String bucket="kccbrewbucket";

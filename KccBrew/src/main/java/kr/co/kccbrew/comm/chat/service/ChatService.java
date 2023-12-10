@@ -13,8 +13,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class ChatService implements IChatService{
 
-	@Autowired
-	private final IChatRepository chatRepository;
+	private IChatRepository chatRepository;
 	/**
 	 * @return 사용자 채팅작성
 	 */

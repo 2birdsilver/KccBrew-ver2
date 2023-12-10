@@ -32,9 +32,7 @@ import kr.co.kccbrew.schdlMng.model.SchdlMngVo;
 @Service
 public class SchdlMngService implements ISchdlMngService {
 
-	@Autowired
 	private ISchdlMngRepository schdlMngRepository;
-	@Autowired
 	private IUserRepository userRepository;
 
 

@@ -4,7 +4,6 @@
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
-		http://www.springframework.org/schema/cloud/aws/context http://www.springframework.org/schema/cloud/aws/context/spring-cloud-aws-context-1.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
@@ -38,7 +37,10 @@
 				expired-url="/login"></concurrency-control>
 		</session-management>
 
-		<intercept-url pattern="/resources/**"
+		<intercept-url pattern="/**"
+					   access="permitAll" />
+
+		<!--<intercept-url pattern="/resources/**"
 			access="permitAll" />
 		<intercept-url pattern="/search-store-list"
 			access="permitAll" />
@@ -50,7 +52,7 @@
 			access="permitAll" />
 		<intercept-url pattern="/chat/**" access="permitAll" />
 
-		<!-- 비로그인회원만 접근가능 -->
+		&lt;!&ndash; 비로그인회원만 접근가능 &ndash;&gt;
 		<intercept-url pattern="/login"
 			access="hasAnyRole('ROLE_NOTAPPROVED' , 'ROLE_ANONYMOUS')" />
 		<intercept-url pattern="/signup"
@@ -63,7 +65,7 @@
 			access="hasAnyRole('ROLE_NOTAPPROVED' , 'ROLE_ANONYMOUS')" />
 
 
-		<!-- 관리자 접근가능 -->
+		&lt;!&ndash; 관리자 접근가능 &ndash;&gt;
 		<intercept-url pattern="/admin/**"
 			access="hasAuthority('ROLE_ADMIN')" />
 		<intercept-url pattern="/store/**"
@@ -77,18 +79,18 @@
 		<intercept-url pattern="/file/**"
 			access="hasAuthority('ROLE_ADMIN')" />
 
-		<!-- 점주 접근가능 -->
+		&lt;!&ndash; 점주 접근가능 &ndash;&gt;
 		<intercept-url pattern="/manager/**"
 			access="hasRole('ROLE_MANAGER')" />
 
 
-		<!-- 수리기사 접근가능 -->
+		&lt;!&ndash; 수리기사 접근가능 &ndash;&gt;
 		<intercept-url pattern="/mecha/**"
 			access="hasRole('ROLE_MECHA')" />
 
 		<intercept-url pattern="/**" access="isAuthenticated()" />
 		<intercept-url pattern="/chat/**"
-			access="hasAnyRole('ROLE_MECHA' , 'ROLE_MANAGER')" />
+			access="hasAnyRole('ROLE_MECHA' , 'ROLE_MANAGER')" />-->
 
 		<!-- 로그인 설정 -->
 		<form-login login-page="/login"

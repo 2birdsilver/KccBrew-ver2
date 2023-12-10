@@ -13,8 +13,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class UserSearchService implements IUserSearchService {
-	
-	@Autowired
+
 	private IUserSearchRepository userSearchRepository;
 	
 	/**
