@@ -114,7 +114,7 @@
 
 
 
-	<view-controller path="/" view-name="/home" />
+	<!--<view-controller path="/" view-name="/home" />-->
 
 	<util:properties id="serverImgPath"
 		location="classpath:/config/application.properties" />
@@ -125,7 +125,6 @@
 
 		<!-- 로그수집 및 저장 -->
 		<interceptor>
-			<mapping path="/login" />
 			<mapping path="/register" />
 			<mapping path="/holiday/add" />
 			<mapping path="/holiday/delete" />

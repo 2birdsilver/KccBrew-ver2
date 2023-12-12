@@ -55,18 +55,18 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@GetMapping("/login")
+/*	@GetMapping("/login")
 	public String requestMethod(
 			@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "exception", required = false) String exception,
 			Model model) {
 
-		/* 에러와 예외를 모델에 담아 view resolve */
+		*//* 에러와 예외를 모델에 담아 view resolve *//*
 		model.addAttribute("error", error);
 		model.addAttribute("errorMessage", exception);
 
 		return "security/loginform";
-	}
+	}*/
 
 	@GetMapping("/security-test")
 	public String requestMethod2(Model model) {
