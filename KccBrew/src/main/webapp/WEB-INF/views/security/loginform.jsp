@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
-<link rel="icon" type="image/png" href="${path}/resources/img/main/kccbrw-representative-logo.png">
 
 <!-- ------------------ FONTS --------------------------->
 <!--------------------- NOTOSANS ------------------------>

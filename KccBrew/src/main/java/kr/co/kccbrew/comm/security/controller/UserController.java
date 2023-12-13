@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.socket.WebSocketSession;
 
 import kr.co.kccbrew.comm.security.model.UserVo;
@@ -55,18 +56,28 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-/*	@GetMapping("/login")
+	 // @GetMapping("/login")
 	public String requestMethod(
 			@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "exception", required = false) String exception,
-			Model model) {
+			Model model, ModelAndView mv) {
 
-		*//* 에러와 예외를 모델에 담아 view resolve *//*
+		 // 에러와 예외를 모델에 담아 view resolve
 		model.addAttribute("error", error);
 		model.addAttribute("errorMessage", exception);
 
-		return "security/loginform";
-	}*/
+		return "test";
+	}
+
+	// @GetMapping("/login")
+	public String login() {
+		return "login";
+	}
+
+	@GetMapping("/login")
+	public String loginV3() {
+		return "security/loginform2";
+	}
 
 	@GetMapping("/security-test")
 	public String requestMethod2(Model model) {
