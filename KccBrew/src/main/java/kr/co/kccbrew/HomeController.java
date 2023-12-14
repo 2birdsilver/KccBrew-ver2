@@ -36,7 +36,6 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	@ResponseBody
 	public String home(Locale locale, Model model,HttpServletRequest httpServletRequest, Authentication authentication) {
 /*		logger.info("Welcome home! The client locale is {}.", locale);
 
@@ -63,7 +62,7 @@ public class HomeController {
 		} else {
 			return "redirect:/logout";
 		}*/
-		return "hello!";
+		return "index";
 	}
 }
 

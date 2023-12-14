@@ -4,6 +4,7 @@
 
 plugins {
     id 'java'
+    id 'war'
     id 'org.springframework.boot' version '3.0.2'
     id 'io.spring.dependency-management' version '1.1.0'
 }
@@ -22,15 +23,21 @@ dependencies {
     implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.3'
     implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
     implementation 'org.springframework.boot:spring-boot-starter-batch'
-//    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-security'
-//    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-websocket', version: '2.7.14'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.1.2'
     implementation group: 'org.apache.commons', name: 'commons-email', version: '1.5'
 
-    implementation group: 'jakarta.servlet.jsp.jstl', name: 'jakarta.servlet.jsp.jstl-api', version: '3.0.0'
-    implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
+    //JSP 추가 시작
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+    implementation 'jakarta.servlet:jakarta.servlet-api'
+    implementation 'jakarta.servlet.jsp.jstl:jakarta.servlet.jsp.jstl-api'
+    implementation 'org.glassfish.web:jakarta.servlet.jsp.jstl'
+
+    // jar -> war 변경
+    implementation 'org.springframework.boot:spring-boot-starter-tomcat'
 
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.28'
     implementation group: 'com.querydsl', name: 'querydsl-jpa', version: '5.0.0'
@@ -100,4 +107,8 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+bootWar {
+    enabled = true
 }

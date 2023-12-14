@@ -76,7 +76,7 @@ public class UserController {
 
 	@GetMapping("/login")
 	public String loginV3() {
-		return "security/loginform2";
+		return "security/loginform";
 	}
 
 	@GetMapping("/security-test")
